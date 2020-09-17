@@ -13,4 +13,4 @@ function trekVars(options = {}) {
 
 trekVars.postcss = true;
 
-export default trekVars;
+module.exports = trekVars;

@@ -1,6 +1,6 @@
 {
   "name": "postcss-trek-vars",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Variable management for Trek.",
   "main": "index.js",
   "dependencies": {},
@@ -14,6 +14,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Taha Kelesoglu (nofloor)",
-  "license": "MIT",
-  "type": "module"
+  "license": "MIT"
 }
