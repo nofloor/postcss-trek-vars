@@ -5,7 +5,7 @@ function trekVars(options = {}) {
       let value = replaceVars(decl.value);
       const regex = /(\s|^)(\(.+\))/;
       if (regex.test(value)) {
-        const match = decl.value.match(regex);
+        const match = value.match(regex);
         value = calculate(match[2]);
       }
       decl.value = value;
@@ -21,9 +21,10 @@ function trekVars(options = {}) {
   }
   
   function calculate(string) {
+    const regex = /(\(|\s|^)+(\(.+\))(\s|;|$)?/;
     const match = string.match(/([a-z]+)/g);
     let unit = '';
-    if (undefined !== match[0]) {
+    if (match !== null) {
       unit = match[0];
       string = string.replace(/([a-z]+)/g, '');
     }

@@ -1,6 +1,6 @@
 {
   "name": "postcss-trek-vars",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Variable management for Trek.",
   "main": "index.js",
   "dependencies": {},
