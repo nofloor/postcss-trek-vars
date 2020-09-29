@@ -7,7 +7,6 @@ function trekVars(options = {}) {
       if (regex.test(value)) {
         const match = decl.value.match(regex);
         value = calculate(match[2]);
-        console.log(value);
       }
       decl.value = value;
     }
