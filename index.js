@@ -10,7 +10,6 @@ function trekVars(options = {}) {
         console.log(value);
       }
       decl.value = value;
-      console.log(decl.value);
     }
   }
   
@@ -23,7 +22,6 @@ function trekVars(options = {}) {
   }
   
   function calculate(string) {
-    const regex = /(\(|\s|^)+(\(.+\))(\s|;|$)?/;
     const match = string.match(/([a-z]+)/g);
     let unit = '';
     if (undefined !== match[0]) {
@@ -32,7 +30,6 @@ function trekVars(options = {}) {
     }
     return eval(string) + unit;
   }
-  
 }
 
 trekVars.postcss = true;
