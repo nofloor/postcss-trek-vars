@@ -28,3 +28,23 @@ test('replaces trek variables', () => {
   trekVars.Declaration(decl);
   expect(decl.value).toBe('#000000');
 });
+
+test('uses next variable if first does not exist', () => {
+  const decl = { value: '' };
+  
+  decl.value = '-trek(color, Black)';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('#000000');
+  
+  decl.value = '-trek(color, Black, color_1)';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('#000000');
+  
+  decl.value = '-trek(color, black, color_1, col)';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('#000');
+  
+  decl.value = '-trek(  color, black  , color_1, col  )';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('#000');
+});
