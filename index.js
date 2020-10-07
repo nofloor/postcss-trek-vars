@@ -21,6 +21,8 @@ function trekVars(options = {}) {
       const regex = /-trek-([a-zA-Z0-9-_]+)/g;
       return string.replace(regex, (whole, variable) => undefined !== options[variable] ? options[variable] : whole);
     }
+    
+    return string;
   }
 }
 

@@ -27,6 +27,10 @@ test('replaces trek variables', () => {
   decl.value = '-trek-Black';
   trekVars.Declaration(decl);
   expect(decl.value).toBe('#000000');
+  
+  decl.value = 'black 1.4';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('black 1.4');
 });
 
 test('uses next variable if first does not exist', () => {
