@@ -14,7 +14,7 @@ function trekVars(options = {}) {
         for (let i = 0, count = vars.length; i < count; i++) {
           if (undefined !== options[vars[i]]) return options[vars[i]];
         }
-        return whole;
+        return vars[vars.length - 1];
       });
     }
     else if (string.indexOf('-trek-') > -1) {
