@@ -44,3 +44,19 @@ test('replaces trek variables', () => {
   trekVars.Declaration(decl);
   expect(decl.value).toBe('1px solid undefined');
 });
+
+test('replaces trek variables', () => {
+  const decl = { value: '' };
+
+  decl.value = '-trek-button-line-height|-trek-line-height';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('1.5');
+
+  decl.value = '-trek-button-line-height|-trek-line-butt|1px';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('1px');
+
+  decl.value = '-trek-button-line-height|-trek-line-height|1px';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('1.5');
+});

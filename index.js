@@ -9,7 +9,18 @@ function trekVars(options = {}) {
   function replaceVars(string) {
     if (string.indexOf('-trek-') > -1) {
       const regex = /-trek-([a-zA-Z0-9-_]+)/g;
-      return string.replace(regex, (whole, variable) => undefined !== options[variable] ? options[variable] : 'undefined');
+      string = string.replace(regex, (whole, variable) => undefined !== options[variable] ? options[variable] : 'undefined');
+      if (string.indexOf('|') > -1) return cleanVars(string);
+      return string;
+    }
+    return string;
+  }
+
+  function cleanVars(string) {
+    const vars = string.split('|');
+    while (vars.length > 0) {
+      string = vars.shift();
+      if (string !== 'undefined') break;
     }
     return string;
   }
