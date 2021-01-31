@@ -45,18 +45,26 @@ test('replaces trek variables', () => {
   expect(decl.value).toBe('1px solid undefined');
 });
 
-test('replaces trek variables', () => {
+test('selects first defined variable', () => {
   const decl = { value: '' };
 
-  decl.value = '-trek-button-line-height|-trek-line-height';
+  decl.value = '-trek-button-line-height||-trek-line-height';
   trekVars.Declaration(decl);
   expect(decl.value).toBe('1.5');
 
-  decl.value = '-trek-button-line-height|-trek-line-butt|1px';
+  decl.value = '-trek-button-line-height||-trek-line-butt||1px';
   trekVars.Declaration(decl);
   expect(decl.value).toBe('1px');
 
-  decl.value = '-trek-button-line-height|-trek-line-height|1px';
+  decl.value = '-trek-button-line-height||-trek-line-height||1px';
   trekVars.Declaration(decl);
   expect(decl.value).toBe('1.5');
+
+  decl.value = '-trek-font-size||14px -trek-button-line-height||-trek-line-height';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('1rem 1.5');
+
+  decl.value = '-trek-font-size -trek-button-line-height||-trek-line-height';
+  trekVars.Declaration(decl);
+  expect(decl.value).toBe('1rem 1.5');
 });

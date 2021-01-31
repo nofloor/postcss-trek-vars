@@ -10,19 +10,23 @@ function trekVars(options = {}) {
     if (string.indexOf('-trek-') > -1) {
       const regex = /-trek-([a-zA-Z0-9-_]+)/g;
       string = string.replace(regex, (whole, variable) => undefined !== options[variable] ? options[variable] : 'undefined');
-      if (string.indexOf('|') > -1) return cleanVars(string);
+      if (string.indexOf('||') > -1) return cleanVars(string);
       return string;
     }
     return string;
   }
 
   function cleanVars(string) {
-    const vars = string.split('|');
-    while (vars.length > 0) {
-      string = vars.shift();
-      if (string !== 'undefined') break;
-    }
-    return string;
+    const groups = string.trim().split(/\s+/);
+    return groups.map((group) => {
+      const vals = group.split('||');
+      let val;
+      while (vals.length > 0) {
+        val = vals.shift();
+        if (val !== 'undefined') break;
+      }
+      return val;
+    }).join(' ');
   }
 }
 
